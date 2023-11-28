@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>МемоКрафт</h1>
+    </header>
+
+    <div class="main-container" id="description-id">
+        <h1>Добро пожаловать в МемоКрафт - творческий мир мемов!</h1>
+        <p>Здесь ты можешь создавать и делиться своими самыми смешными и оригинальными мемами. Просто добавь изображение и дай волю своему воображению!</p>
+        <div class="add-image-btn">
+            <input type="file" id="input-file" style="display: none;" onchange="loadImage()">
+            <label for="input-file" class="input-label">Добавить изображение</label>
+        </div>
+    </div>
+
+    <div class="gener-wrapper">
+        <div class="gener" id="mem-generator">
+            <img id="meme-img">
+        </div>
+    </div>
+
+    <footer>
+        <p>Крафтово смешно c МемоКрафтом!</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
