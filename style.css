@@ -64,12 +64,30 @@ header {
 }
 
 .gener-wrapper{
+    position: relative;
+    opacity: 0;
     margin: auto;
     display: flex;    
 }
 
 .gener{
     margin: auto;
+}
+
+.mem-textarea{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.side{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.side *:nth-child(2n + 1){
+    margin-top: 20px;
 }
 
 footer {

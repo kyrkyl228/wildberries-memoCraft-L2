@@ -22,9 +22,32 @@
         </div>
     </div>
 
-    <div class="gener-wrapper">
+    <div class="gener-wrapper" id="gener-wrapper-id">
         <div class="gener" id="mem-generator">
             <img id="meme-img">
+            <textarea id="mem-textarea" class="mem-textarea"></textarea>
+        </div>
+
+        <div id="side-menu" class="side">
+            <label for="font-size">Font Size:</label>
+            <input type="range" id="font-size" min="10" max="50" step="1">
+    
+            <label for="font-color">Font Color:</label>
+            <input type="color" id="font-color">
+    
+            <label for="font-style">Font Style:</label>
+            <select id="font-style">
+                <option value="normal">Normal</option>
+                <option value="italic">Italic</option>
+                <option value="oblique">Oblique</option>
+            </select>
+            <label for="widthInput">Ширина:</label>
+            <input type="number" id="widthInput" value="200">
+            
+            <label for="heightInput">Высота:</label>
+            <input type="number" id="heightInput" value="100">
+    
+            <button id="save-btn">Save</button>
         </div>
     </div>
 
