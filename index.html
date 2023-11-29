@@ -17,14 +17,14 @@
         <h1>Добро пожаловать в МемоКрафт - творческий мир мемов!</h1>
         <p>Здесь ты можешь создавать и делиться своими самыми смешными и оригинальными мемами. Просто добавь изображение и дай волю своему воображению!</p>
         <div class="add-image-btn">
-            <input type="file" id="input-file" style="display: none;" onchange="loadImage()">
+            <input type="file" id="input-file" accept="image/png" style="display: none;" onchange="loadImage(event)">
             <label for="input-file" class="input-label">Добавить изображение</label>
         </div>
     </div>
 
     <div class="gener-wrapper" id="gener-wrapper-id">
         <div class="gener" id="mem-generator">
-            <img id="meme-img">
+            <img id="meme-img" style="display: block;">
             <textarea id="mem-textarea" class="mem-textarea"></textarea>
         </div>
 
@@ -42,10 +42,10 @@
                 <option value="oblique">Oblique</option>
             </select>
             <label for="widthInput">Ширина:</label>
-            <input type="number" id="widthInput" value="200">
+            <input type="number" id="widthInput" value="180">
             
             <label for="heightInput">Высота:</label>
-            <input type="number" id="heightInput" value="100">
+            <input type="number" id="heightInput" value="40">
     
             <button id="save-btn">Save</button>
         </div>
