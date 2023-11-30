@@ -73,45 +73,52 @@ saveBtn.addEventListener('click', function () {
 
 
 
-    // Создаем элемент canvas
     var canvas = document.createElement("canvas");
-
-
-    // Получаем контекст рисования 2D
     var context = canvas.getContext("2d");
-
-    // Создаем объект изображения
     var img = new Image();
-
-
-    // Это указывает браузеру, что делать, когда изображение загружено
     img.onload = function () {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        context.drawImage(img, 0, 0);
-
-        var text = document.getElementById('mem-textarea')
-        var top = parseInt(window.getComputedStyle(text).top, 10);
-        var left = parseInt(window.getComputedStyle(text).left, 10);
-
-        context.textBaseline = "top";
-        context.font = window.getComputedStyle(text).fontSize + ' Arial';
-        context.fillStyle = parseInt(window.getComputedStyle(text).color, 10);
-        
-        context.fillText(text.innerHTML, left, top)
-        const dataUrl = canvas.toDataURL('image/png');
-
-        const downloadLink = document.createElement('a');
-
-        downloadLink.href = dataUrl;
-
-        downloadLink.download = 'meme.png';
-
-        document.body.appendChild(downloadLink);
-
-        downloadLink.click();
-
-        document.body.removeChild(downloadLink);
+      canvas.width = img.width;
+      canvas.height = img.height;
+      context.drawImage(img, 0, 0);
+    
+      var text = document.getElementById('mem-textarea');
+      var top = parseInt(window.getComputedStyle(text).top, 10);
+      var left = parseInt(window.getComputedStyle(text).left, 10);
+    
+      context.textBaseline = "top";
+      context.font = window.getComputedStyle(text).fontSize + ' Arial';
+      context.fillStyle = window.getComputedStyle(text).color;
+    
+      var words = text.innerHTML.split(' ');
+      var maxWidth = parseInt(window.getComputedStyle(text).width, 10); // максимальная ширина строки
+    
+      var currentLine = '';
+      var lines = [];
+    
+      words.forEach(function (word) {
+        var testLine = currentLine + word + ' ';
+        var testWidth = context.measureText(testLine).width;
+        if (testWidth > maxWidth) {
+          lines.push(currentLine);
+          currentLine = word + ' ';
+        } else {
+          currentLine = testLine;
+        }
+      });
+    
+      lines.push(currentLine);
+    
+      lines.forEach(function (line, index) {
+        context.fillText(line, left, top + index * parseInt(window.getComputedStyle(text).lineHeight, 10));
+      });
+    
+      const dataUrl = canvas.toDataURL('image/png');
+      const downloadLink = document.createElement('a');
+      downloadLink.href = dataUrl;
+      downloadLink.download = 'meme.png';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
     };
 
     // Загружаем файл изображения
